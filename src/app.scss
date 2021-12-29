@@ -1,0 +1,16 @@
+.app {
+
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.users {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}

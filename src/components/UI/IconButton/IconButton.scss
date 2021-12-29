@@ -1,0 +1,52 @@
+$colorPrimary: #222;
+$colorPrimaryHover: #333;
+$colorPrimaryActive: #111;
+
+.button {
+  display: block;
+  text-transform: uppercase;
+  transition: 0.2s;
+  padding: 0.7rem 1.4rem;
+  border-radius: 5px;
+  background-color: inherit;
+  cursor: pointer;
+  border: none;
+  box-shadow: 3px 5px 12px #00000017;
+
+  &:hover {
+    box-shadow: 3px 5px 12px #00000038;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &_contained {
+    background-color: $colorPrimary;
+    color: #eee;
+    &:hover {
+      background-color: $colorPrimaryHover;
+    }
+    &:active {
+      background-color: $colorPrimaryActive;
+    }
+  }
+
+  &_outlined {
+    border: 1px solid $colorPrimary;
+    &:hover {
+      border-color: $colorPrimaryHover;
+      backdrop-filter: invert(0.05);
+    }
+    &:active {
+      border-color: $colorPrimaryActive;
+      backdrop-filter: invert(0.2);
+    }
+  }
+
+  &_flat {
+    &:active {
+      backdrop-filter: invert(0.1);
+    }
+  }
+}

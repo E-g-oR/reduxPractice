@@ -1,0 +1,164 @@
+$colorPrimary: #222;
+$colorPrimaryHover: #333;
+$colorPrimaryActive: #111;
+
+.dialog {
+  transition: 0.3s;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(#000, 0.8);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__subtitle {
+    margin-top: 0.5rem;
+    color: #333333;
+  }
+
+  &__form {
+    margin-top: 1rem;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    & .button:not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.text-field {
+  position: relative;
+  width: 100%;
+  height: 2rem;
+  margin: 1.3rem 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+  }
+
+  & label {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    transform: translate(10px, 45%);
+    transition: 0.2s;
+  }
+
+  & input {
+    border: none;
+    outline: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 5px 7px;
+
+    &:focus + label,
+    &:valid + label {
+      opacity: 0.6;
+      transform: translate(-4px, -65%) scale(0.75);
+    }
+
+    &:focus ~ span,
+    &:valid ~ span {
+      left: 0;
+      width: 100%;
+      height: 2px;
+    }
+  }
+
+  & span {
+    transition: 0.2s;
+    position: absolute;
+    background-color: #000;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 1px;
+  }
+}
+
+// ============== styled checkbox
+.checkbox {
+  margin-bottom: 25px;
+  display: block;
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    margin-left: 20px;
+    &:checked + .checkbox__style::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &__style {
+    pointer-events: none;
+    transition: 0.2s;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid $colorPrimary;
+    margin-right: -20px;
+    border-radius: 30px;
+    &::after {
+      transition: 0.15s;
+      border-radius: 30px;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      display: block;
+      width: 8px;
+      height: 8px;
+      background-color: $colorPrimaryHover;
+    }
+    &:hover {
+      border-color: $colorPrimaryHover;
+    }
+
+    &:active {
+      border-color: $colorPrimaryActive;
+    }
+  }
+  & label {
+    padding-left: 25px;
+    cursor: pointer;
+    z-index: 9;
+  }
+}
+// ==============
