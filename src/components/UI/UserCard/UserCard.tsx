@@ -1,6 +1,6 @@
-
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { setEditMode } from "../../../store/slices/formSlice";
 import {
   addUser,
   deleteUser,
@@ -10,7 +10,7 @@ import { Developer, Mentor } from "../../../types/users";
 import IconButton from "../IconButton/IconButton";
 import Delete from "../icons/Delete";
 import Edit from "../icons/Edit";
-import "./usercard.scss"
+import "./usercard.scss";
 
 interface UserCardProps {
   user: Developer | Mentor;
@@ -22,9 +22,9 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
   const users = selectUsers;
   const { type, name, email } = user;
 
-  const handleEditClick = () => {
-    console.log(users(state));
-    dispatch(addUser({ name: "Hello", email: "world", type: "DEVELOPER" }));
+  const handleEditClick = (id: number) => {
+    console.log(id);
+    dispatch(setEditMode(id));
   };
 
   const handleDeleteClick = () => dispatch(deleteUser(user.id));
@@ -42,7 +42,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
           </div>
         </div>
         <div className="card__actions">
-          <IconButton title={"Edit"} onClick={handleEditClick}>
+          <IconButton title={"Edit"} onClick={() => handleEditClick(user.id)}>
             <Edit />
           </IconButton>
           <IconButton title={"Delete"} onClick={handleDeleteClick}>

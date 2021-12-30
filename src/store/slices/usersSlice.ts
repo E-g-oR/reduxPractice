@@ -1,9 +1,9 @@
-import {
-  createSlice,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
-import { CreateUser, Developer, Mentor } from "../../types/users";
+import { CreateUser, Developer, EditUserInfo, Mentor } from "../../types/users";
+
+export const getUserById = (users: UsersState, id: number) =>
+  users.find((user) => user.id === id);
 
 type UsersState = (Developer | Mentor)[];
 
@@ -39,10 +39,19 @@ export const usersSlice = createSlice({
         state.splice(deletingIndex, 1);
       }
     },
+    editUser: (state, action: PayloadAction<EditUserInfo>) => {
+      const editngUser = getUserById(state, action.payload.userId);
+      if (editngUser) {
+        const { email, name, type } = action.payload.newInfo;
+        editngUser.email = email;
+        editngUser.name = name;
+        editngUser.type = type;
+      }
+    },
   },
 });
 
-export const { addUser, deleteUser } = usersSlice.actions;
+export const { addUser, deleteUser, editUser } = usersSlice.actions;
 
 export const selectUsers = (state: RootState) => state.users;
 
@@ -51,8 +60,5 @@ export const getMentors = (users: UsersState) =>
 
 export const getDevelopers = (users: UsersState) =>
   users.filter((user) => user.type === "DEVELOPER");
-
-export const getUserById = (users: UsersState, id: number) =>
-  users.find((user) => user.id === id);
 
 export default usersSlice.reducer;

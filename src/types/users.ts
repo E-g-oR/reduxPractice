@@ -15,7 +15,16 @@ export type Mentor = User & {
 };
 
 export type CreateUser = {
-  name: string,
-  email: string,
-  type: "DEVELOPER" | "MENTOR"
-}
+  name: string;
+  email: string;
+  type: "DEVELOPER" | "MENTOR";
+};
+
+export type EditUserInfo = {
+  userId: number;
+  newInfo: {
+    name: string;
+    email: string;
+    type: "DEVELOPER" | "MENTOR";
+  };
+};
