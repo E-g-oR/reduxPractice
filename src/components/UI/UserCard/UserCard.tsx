@@ -7,7 +7,6 @@ import {
   selectUsers,
 } from "../../../store/slices/usersSlice";
 import { Developer, Mentor } from "../../../types/users";
-import Button from "../Button/Button";
 import IconButton from "../IconButton/IconButton";
 import Delete from "../icons/Delete";
 import Edit from "../icons/Edit";
@@ -21,7 +20,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
   const state = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
   const users = selectUsers;
-  const { type, id, name, email } = user;
+  const { type, name, email } = user;
 
   const handleEditClick = () => {
     console.log(users(state));

@@ -1,9 +1,6 @@
-import { AnyAction } from "redux";
 import {
-  createAction,
   createSlice,
   PayloadAction,
-  PayloadActionCreator,
 } from "@reduxjs/toolkit";
 import { RootState } from "..";
 import { CreateUser, Developer, Mentor } from "../../types/users";
@@ -48,9 +45,14 @@ export const usersSlice = createSlice({
 export const { addUser, deleteUser } = usersSlice.actions;
 
 export const selectUsers = (state: RootState) => state.users;
-export const getMentors = (state: RootState) =>
-  state.users.filter((user) => user.type === "MENTOR");
-export const getDevelopers = (state: RootState) =>
-  state.users.filter((user) => user.type === "DEVELOPER");
+
+export const getMentors = (users: UsersState) =>
+  users.filter((user) => user.type === "MENTOR");
+
+export const getDevelopers = (users: UsersState) =>
+  users.filter((user) => user.type === "DEVELOPER");
+
+export const getUserById = (users: UsersState, id: number) =>
+  users.find((user) => user.id === id);
 
 export default usersSlice.reducer;

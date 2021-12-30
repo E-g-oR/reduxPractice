@@ -4,9 +4,9 @@ import { getMentors } from "../../store/slices/usersSlice";
 import UserList from "../UserList";
 
 function MentorList() {
-  const state = useAppSelector((state) => state);
-
-  const mentors = getMentors(state);
+  const users = useAppSelector((state) => state.users);
+  const mentors = getMentors(users);
+  
   return (
     <div className="mentor-list">
       <UserList list={mentors} />

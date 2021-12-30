@@ -100,12 +100,12 @@ const Dialog: React.FC = () => {
             <Button
               onClick={handleCancelClick}
               text="Cancel"
-              style="outlined"
+              type="outlined"
             />
             <Button
               onClick={handleConfirmClick}
               text="Confirm"
-              style="contained"
+              type="contained"
             />
           </div>
         </div>

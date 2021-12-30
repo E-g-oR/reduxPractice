@@ -3,7 +3,7 @@ import "./button.scss";
 
 export interface ButtonProps {
   onClick?: () => void;
-  style?: "contained" | "outlined" | "flat";
+  type?: "contained" | "outlined" | "flat";
   children?: ReactNode;
 }
 
@@ -16,12 +16,12 @@ type NormalButtonProps = ButtonProps & {
 const Button: React.FC<NormalButtonProps> = ({
   text,
   onClick,
-  style = "outlined",
+  type = "outlined",
   leftIcon,
   rightIcon,
 }) => {
   return (
-    <button className={`button button_${style}`} onClick={onClick}>
+    <button className={`button button_${type}`} onClick={onClick}>
       {leftIcon}
       {text}
       {rightIcon}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Developer, Mentor } from "../types/users";
 import UserCard from "./UI/UserCard/UserCard";
 type UserListProps = {

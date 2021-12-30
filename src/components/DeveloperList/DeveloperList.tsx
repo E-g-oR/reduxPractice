@@ -4,8 +4,9 @@ import { getDevelopers } from "../../store/slices/usersSlice";
 import UserList from "../UserList";
 
 function DeveloperList() {
-  const state = useAppSelector((state) => state);
-  const mentors = getDevelopers(state);
+  const users = useAppSelector((state) => state.users);
+  const mentors = getDevelopers(users);
+  
   return (
     <div className="developers-list">
       <UserList list={mentors} />
