@@ -11,7 +11,6 @@ import Dialog from "./components/Dialog/Dialog";
 function App() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state);
-  // const users = useAppSelector((state) => state.users);
 
   const isFormOpen = selectIsOpen(state.form);
 

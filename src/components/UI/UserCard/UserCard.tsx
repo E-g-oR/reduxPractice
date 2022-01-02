@@ -4,6 +4,7 @@ import { setEditMode } from "../../../store/slices/formSlice";
 import {
   addUser,
   deleteUser,
+  getUserById,
   selectUsers,
 } from "../../../store/slices/usersSlice";
 import { Developer, Mentor } from "../../../types/users";
@@ -52,8 +53,13 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
       </div>
       <div className="card__content">
         <p>{`${type}`}</p>
-        <p>{type === "DEVELOPER" && `${user.mentorId}`}</p>
-        <p>{type === "MENTOR" && `${user.developers}`}</p>
+        {type === "DEVELOPER" && user.mentorId ? (
+          <p> {getUserById(state.users, user.mentorId)?.name} </p>
+        ) : null}
+        {type === "MENTOR" &&
+          user.developers.map((developerId) => (
+            <p> {getUserById(state.users, developerId)?.name} </p>
+          ))}
       </div>
     </div>
   );
